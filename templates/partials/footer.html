@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+{% load static %}
+<footer  class="footer_dark">
+    <div  class="footer_top">
+        <div  class="container">
+            <div  class="row">
+                <div  class="col-lg-4 col-md-auto col-sm-auto">
+                    <div  class="widget">
+                        <div  class="footer_logo"><a  href="#">
+                                <img src="static/assets/images/Boissons/I-Cafet_blanc.png" alt="Logo" width="100" height="50">
+                            </a></div>
+                        <p > {{ request.session.description }}</p>
+                    </div>
+                    <div  class="widget">
+                        <ul  class="social_icons social_white">
+                            {% for social in request.session.socials %}
+                                <li >
+                                    <a  target="_blank" href="{{ social.link }}"> 
+                                       <i class="{{ social.icon }}"></i></a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div  class="col-lg-3 col-md-auto col-sm-auto">
+                    <div  class="widget">
+                        <h6  class="widget_title">Liens Utiles</h6>
+                        <ul  class="widget_links">
+                            {% for page in request.session.foot_pages %}
+                            <li >
+                                <a 
+                                    href="{% url 'shop:page' page.slug %}">
+                                    {{ page.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div  class="col-lg-4 col-md-auto col-sm-auto">
+                    <div  class="widget">
+                        <h6  class="widget_title">Informations de Contact</h6>
+                        <ul  class="contact_info contact_info_light">
+                            <li ><i 
+                                    class="ti-location-pin"></i>
+                                <p>{{ request.session.street }}
+                                    {{ request.session.code_postal }}
+                                    {{ request.session.city }}
+                                </p>
+                            </li>
+                            <li ><i  class="ti-email"></i><a
+                                     href="mailto:{{ request.session.email }}">
+                                     {{ request.session.email }}</a>
+                            </li>
+                            <li ><i  class="ti-mobile"></i>
+                                <p >{{ request.session.phone }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="bottom_footer border-top-tran">
+        <div  class="container">
+            <div  class="row">
+                <div  class="col-md-6">
+                    <p  class="mb-md-0 text-center text-md-start"> {{ request.session.copyright }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

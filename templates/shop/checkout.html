@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load price_filter %}
+
+{% block content %}
+
+{% include "partials/top_page.html" with name='Paiement' %}
+
+<div class="main_content">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="heading_s1">
+                        <h4>Tes coordonnées</h4>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_nom">Nom</label>
+                                <input type="text" class="form-control" id="id_nom" name="nom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_prenom">Prénom</label>
+                                <input type="text" class="form-control" id="id_prenom" name="prenom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_classe">Classe</label>
+                                <input type="text" class="form-control" id="id_classe" name="classe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_classe">Email</label>
+                                <input type="text" class="form-control" id="id_classe" name="email" required>
+                            </div>
+                            <input type="submit" value="Valider" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="order_review">
+                        <div class="heading_s1">
+                            <h4>Ton panier</h4>
+                        </div>
+                        <div class="table-responsive order_table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <th>Produit</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in cart.items %}
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a><img width="25" height="25" alt="product : {{ item.product.name }}" src="{{ item.product.image }}"></a>
+                                        </td>
+                                        <td>{{ item.product.name }} 
+                                            <span class="product-price">{{ item.product.price | format_price }}</span>
+                                            <span class="product-qty">x {{ item.quantity }}</span>
+                                        </td>
+                                        <td>{{ item.sub_total_ttc | format_price }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td></td>
+                                        <td class="product-subtotal">{{ cart.sub_total_ttc | format_price }}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="payment_method"></div>
+                        <a href="#" class="btn btn-fill-out btn-block">Valider & payer au comptoir {{ cart.sub_total_ttc | format_price }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

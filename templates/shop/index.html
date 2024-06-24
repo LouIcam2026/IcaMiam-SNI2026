@@ -1,0 +1,280 @@
+<meta charset="utf-8">
+{% extends "base.html" %}
+
+
+{% block content %}
+    
+{% include "partials/slider.html" with sliders=sliders %}
+
+<div  class="main_content">
+    <div  class="section pb_20">
+        <div  class="container">
+            <div  class="row">
+                {% for collection in collections %}
+                <div  class="col-md-6">
+                    <div  class="single_banner"><img 
+                            alt="shop_banner_img1"
+                            src="{{ collection.image.url }}">
+                        <div  class="single_banner_info">
+                            <h5  class="single_bn_title1" style="margin-left: 50px;">{{ collection.description }}</h5>
+                            <h3  class="single_bn_title" style="margin-left: 50px;">{{ collection.title }}</h3><a
+                                 class="single_bn_link"
+                                href="{{ collection.button_link }}" style="margin-left: 50px;">{{ collection.button_text }}</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                {% endfor %}
+              
+            </div>
+        </div>
+    </div>
+    <div  class="section small_pt pb_70">
+        <div  class="container">
+            <div  class="row justify-content-center">
+                <div  class="col-md-6">
+                    <div  class="heading_s1 text-center">
+                        <h2 >Produits exclusifs</h2>
+                    </div>
+                </div>
+            </div>
+            <div  class="row">
+                <div  class="col-12">
+                    <div  class="tab-style1">
+                        <ul  role="tablist" class="nav nav-tabs justify-content-center">
+                            <!--<li  class="nav-item"><a 
+                                    id="arrival-tab" data-bs-toggle="tab" href="#arrival" role="tab"
+                                    aria-controls="arrival" aria-selected="true" class="nav-link active">Nouveautés</a></li>-->
+                            <li  class="nav-item"><a 
+                                    id="sellers-tab" data-bs-toggle="tab" href="#sellers" role="tab"
+                                    aria-controls="sellers" aria-selected="false" class="nav-link">Meilleures ventes</a>
+                            </li>
+                            <!--<li  class="nav-item"><a 
+                                    id="special-tab" data-bs-toggle="tab" href="#special" role="tab"
+                                    aria-controls="special" aria-selected="false" class="nav-link">Offre spéciale
+                                </a></li>-->
+                        </ul>
+                    </div>
+                    <div  class="tab-content">
+                        <!--<div  id="arrival" role="tabpanel" aria-labelledby="arrival-tab"
+                            class="tab-pane fade show active">
+                            <div  class="row shop_container">
+                                <div  class="col-lg-3 col-md-4 col-6">
+                                    <div  class="product">
+                                        <div  class="product_img"><a
+                                                 href="shop-product-detail.html"><img
+                                                     alt="product_img1"
+                                                    src="/assets/files/970670668041335927385290724653240714148366921684565574162.webp"></a>
+                                            <div  class="product_action_box">
+                                                <ul  class="list_none pr_action_btn">
+                                                    <li  class="add-to-cart"><a
+                                                             href="#"><i
+                                                                
+                                                                class="icon-basket-loaded"></i> Add To Cart </a>
+                                                    </li>
+                                                    <li ><a 
+                                                            href="shop-compare.html" ><i
+                                                                
+                                                                class="icon-shuffle"></i></a></li>
+                                                    <li ><a 
+                                                            href="shop-quick-view.html" ><i
+                                                                
+                                                                class="icon-magnifier-add"></i></a></li>
+                                                    <li ><a 
+                                                            href="#"><i 
+                                                                class="icon-heart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div  class="product_info">
+                                            <h6  class="product_title"><a
+                                                    
+                                                    ng-reflect-router-link="/,product,bikini-unicolore-cte"
+                                                    href="/product/bikini-unicolore-ctel-shop"> Bikini unicolore
+                                                    côtelé</a></h6>
+                                            <div  class="product_price"><span
+                                                     class="price">$28.24</span><del
+                                                    >$241.5</del>
+                                                <div  class="on_sale"><span
+                                                        >35% Off</span></div>
+                                            </div>
+                                            <div  class="rating_wrap">
+                                                <div  class="rating">
+                                                    <div  class="product_rate"
+                                                        style="width: 80%;"></div>
+                                                </div><span 
+                                                    class="rating_num">(21)</span>
+                                            </div>
+                                            <div  class="pr_desc">
+                                                <p >Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit. Phasellus blandit massa enim.
+                                                    Nullam id varius nunc id varius nunc.</p>
+                                            </div>
+                                            <div  class="pr_switch_wrap">
+                                                <div  class="product_color_switch"><span
+                                                         data-color="#87554B"
+                                                        class="active"></span><span 
+                                                        data-color="#333333"></span><span
+                                                         data-color="#DA323F"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div  id="sellers" role="tabpanel" aria-labelledby="sellers-tab"
+                            class="tab-pane fade">
+                            <div  class="row shop_container">
+
+                                {% for product in best_sellers %}
+                                    <div  class="col-lg-3 col-md-4 col-6">
+                                        {% include "partials/product.html" with product=product %}
+                                    </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                        <!--<div  id="featured" role="tabpanel"
+                            aria-labelledby="featured-tab" class="tab-pane fade">
+                            <div  class="row shop_container">
+                                <div  class="col-lg-3 col-md-4 col-6">
+                                    <div  class="product">
+                                        <div  class="product_img"><a
+                                                
+                                                ng-reflect-router-link="/,product,culotte-en-dentelle-"
+                                                href="/product/culotte-en-dentelle-losange-tulle"><img
+                                                     alt="product_img1"
+                                                    src="/assets/files/culottes/culotte_11/822238303084799851607058697164904282250918561684087225541.webp"></a>
+                                            <div  class="product_action_box">
+                                                <ul  class="list_none pr_action_btn">
+                                                    <li  class="add-to-cart"><a
+                                                             href="#"><i
+                                                                
+                                                                class="icon-basket-loaded"></i> Add To Cart </a>
+                                                    </li>
+                                                    <li ><a 
+                                                            href="shop-compare.html" ><i
+                                                                
+                                                                class="icon-shuffle"></i></a></li>
+                                                    <li ><a 
+                                                            href="shop-quick-view.html" ><i
+                                                                
+                                                                class="icon-magnifier-add"></i></a></li>
+                                                    <li ><a 
+                                                            href="#"><i 
+                                                                class="icon-heart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div  class="product_info">
+                                            <h6  class="product_title"><a
+                                                    
+                                                    ng-reflect-router-link="/,product,culotte-en-dentelle-"
+                                                    href="/product/culotte-en-dentelle-losange-tulle"> Culotte en
+                                                    dentelle losange à tulle</a></h6>
+                                            <div  class="product_price"><span
+                                                     class="price">$17.92</span><del
+                                                    >$252.36</del>
+                                                <div  class="on_sale"><span
+                                                        >35% Off</span></div>
+                                            </div>
+                                            <div  class="rating_wrap">
+                                                <div  class="rating">
+                                                    <div  class="product_rate"
+                                                        style="width: 80%;"></div>
+                                                </div><span 
+                                                    class="rating_num">(21)</span>
+                                            </div>
+                                            <div  class="pr_desc">
+                                                <p >Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit. Phasellus blandit massa enim.
+                                                    Nullam id varius nunc id varius nunc.</p>
+                                            </div>
+                                            <div  class="pr_switch_wrap">
+                                                <div  class="product_color_switch"><span
+                                                         data-color="#87554B"
+                                                        class="active"></span><span 
+                                                        data-color="#333333"></span><span
+                                                         data-color="#DA323F"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--<div  id="special" role="tabpanel" aria-labelledby="special-tab"
+                            class="tab-pane fade">
+                            <div  class="row shop_container">
+                                <div  class="col-lg-3 col-md-4 col-6">
+                                    <div  class="product">
+                                        <div  class="product_img"><a
+                                                 href="shop-product-detail.html"><img
+                                                     alt="product_img1"
+                                                    src="/assets/files/jupes/jupe_9/3173273343910765018722650935896721963486558051684087227442.webp"></a>
+                                            <div  class="product_action_box">
+                                                <ul  class="list_none pr_action_btn">
+                                                    <li  class="add-to-cart"><a
+                                                             href="#"><i
+                                                                
+                                                                class="icon-basket-loaded"></i> Add To Cart </a>
+                                                    </li>
+                                                    <li ><a 
+                                                            href="shop-compare.html" ><i
+                                                                
+                                                                class="icon-shuffle"></i></a></li>
+                                                    <li ><a 
+                                                            href="shop-quick-view.html" ><i
+                                                                
+                                                                class="icon-magnifier-add"></i></a></li>
+                                                    <li ><a 
+                                                            href="#"><i 
+                                                                class="icon-heart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div  class="product_info">
+                                            <h6  class="product_title"><a
+                                                     href="shop-product-detail.html">
+                                                    Jupe crayon taille haute en dentelle</a></h6>
+                                            <div  class="product_price"><span
+                                                     class="price">$57.49</span><del
+                                                    >$209.37</del>
+                                                <div  class="on_sale"><span
+                                                        >35% Off</span></div>
+                                            </div>
+                                            <div  class="rating_wrap">
+                                                <div  class="rating">
+                                                    <div  class="product_rate"
+                                                        style="width: 80%;"></div>
+                                                </div><span 
+                                                    class="rating_num">(21)</span>
+                                            </div>
+                                            <div  class="pr_desc">
+                                                <p >Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit. Phasellus blandit massa enim.
+                                                    Nullam id varius nunc id varius nunc.</p>
+                                            </div>
+                                            <div  class="pr_switch_wrap">
+                                                <div  class="product_color_switch"><span
+                                                         data-color="#87554B"
+                                                        class="active"></span><span 
+                                                        data-color="#333333"></span><span
+                                                         data-color="#DA323F"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+    
