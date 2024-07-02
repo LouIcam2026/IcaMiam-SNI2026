@@ -22,6 +22,7 @@ Pour accéder au site :
 Si un probleme arrive au demarrage du serveur essayer de copier le contenu de 'ToCopy' dans votre '%localappdata%'
 
 [Login admin :](http://127.0.0.1/admin)
+
 Login : ```admin```
 
 Password : ```Icam123```
