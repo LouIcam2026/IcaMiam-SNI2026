@@ -1,10 +1,7 @@
-from django.urls import path, include
-from shop.views import shop_view
-from shop.views import cart_view
-from shop.views import checkout_view
+from django.urls import path
+from shop.views import shop_view, cart_view, checkout_view
 
-app_name="shop"
-
+app_name = "shop"
 
 urlpatterns = [
     # shop
@@ -18,6 +15,7 @@ urlpatterns = [
     path('cart/add/<int:product_id>', cart_view.add_to_cart, name='add_to_cart'),
     path('cart/remove/<int:product_id>/<int:quantity>', cart_view.remove_from_cart, name='remove_from_cart'),
 
-    #checkout
-    path('checkout', checkout_view.index, name='checkout'),
+    # checkout
+    path('checkout/', checkout_view.index, name='checkout'),
+    path('order_success/', checkout_view.order_success, name='order_success'),
 ]
