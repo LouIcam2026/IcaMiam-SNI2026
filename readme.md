@@ -10,19 +10,4 @@ Repository du site IcaMiam
 😍 Gabin Hamel - Team leader
 
 ## Installation
-
-Pour demarer le server : ()
-```python
-py manage.py runserver 80
-```
-Pour accéder au site :
-[Icamiam](http://127.0.0.1/)
-
-## SAV
-Si un probleme arrive au demarrage du serveur essayer de copier le contenu de 'ToCopy' dans votre '%localappdata%'
-
-[Login admin :](http://127.0.0.1/admin)
-
-Login : ```admin```
-
-Password : ```Icam123```
+Lire le [document technique](https://github.com/LouIcam2026/IcaMiam-SNI2026/blob/main/Documentation/Documentation_technique.pdf)
